@@ -11,6 +11,7 @@
 - 关键词筛选
 - `-s <键> [asc|desc]` 按任意数值列排序
 - `--json` 输出 JSON（配合 `--full` 输出全部字段）
+- 输出格式自适应：终端里打印表格，被管道/重定向时默认输出 JSON；`--tui` 强制表格
 - 数据本地缓存 6 小时
 
 ## 安装
@@ -31,8 +32,11 @@ llml --full -n 5             # 全部列，两行一组
 llml -s speed desc           # 按输出速度降序
 llml -s cost asc             # 每任务成本升
 llml --json -n 3 gemini      # JSON 输出，配合 jq 使用
+llml -n 5 --tui              # 管道/重定向场景下强制表格输出
 llml --no-cache              # 忽略缓存强制抓取并刷新
 ```
+
+flag 可以写在关键词之前或之后（如 `llml claude --json`）。
 
 排序键支持完整字段名与别名（大小写不敏感）：
 
